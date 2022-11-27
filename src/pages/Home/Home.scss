@@ -1,0 +1,16 @@
+.home {
+  &__charts {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, calc(30% - 1.5rem) calc(70% - 1.5rem));
+    gap: 0.9375rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .home {
+    &__charts {
+      grid-template-columns: 100%;
+    }
+  }
+}

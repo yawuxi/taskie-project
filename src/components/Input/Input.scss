@@ -1,0 +1,41 @@
+.common-input {
+  input {
+    font-size: 1rem;
+    background-color: var(--input-background);
+    color: var(--input-text);
+    min-width: 200px;
+    border-radius: 0.625rem;
+    border: none;
+    padding: 0.9375rem;
+    height: 50px;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  &__file-upload {
+    color: #FFFFFF;
+    background-color: var(--accent-blue);
+    height: 100%;
+    padding: 0 0.9375rem;
+    border-radius: 0.625rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    overflow: hidden;
+  }
+
+  &__title {
+    color: var(--input-title);
+    margin-bottom: 0.3rem;
+  }
+}

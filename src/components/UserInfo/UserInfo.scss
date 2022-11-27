@@ -1,0 +1,35 @@
+.user-info {
+  display: flex;
+  gap: 1.125rem;
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--user-name);
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__position {
+    font-size: 0.875rem;
+    color: var(--user-position);
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

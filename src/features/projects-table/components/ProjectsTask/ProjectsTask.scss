@@ -1,0 +1,23 @@
+.projects-task {
+  padding: 0.9375rem;
+  background-color: var(--task-background);
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+
+  &__title {
+    font-size: 1.25rem;
+    color: var(--task-title);
+  }
+
+  &__description {
+    color: var(--task-description);
+  }
+
+  &__date {
+    color: var(--task-date-created);
+    margin-top: auto;
+    text-align: right;
+  }
+}

@@ -1,0 +1,20 @@
+@import "scss/variables.scss";
+@import "scss/reset.scss";
+
+@media (max-width: 1300px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 999px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 75%;
+  }
+}

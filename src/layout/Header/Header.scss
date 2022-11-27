@@ -1,0 +1,41 @@
+.header {
+  height: 50px;
+  margin-bottom: 3.75rem;
+
+  &__pc {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.9375rem;
+  }
+
+  &__mobile {
+    display: none;
+    align-items: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    height: auto;
+    margin-bottom: 2.75rem;
+
+    &__pc {
+      display: none;
+    }
+
+    &__mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 1.875rem;
+    }
+
+    &__mobile--bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+}

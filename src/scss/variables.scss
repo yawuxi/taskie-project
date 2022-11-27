@@ -1,0 +1,81 @@
+:root {
+  /* backgrounds */
+  --background-dark: #111315;
+  --background-light: #1A1C1E;
+  /* main */
+  --main-background: #1A1C1E;
+  /* title */
+  --title: #FFFFFF;
+  /* accent */
+  --accent-blue: #046BF3;
+  --accent-orange: #CC6709;
+  --accent-green: #37BD6B;
+  --accent-gray: #333333;
+  /* opacity */
+  --opacity-accent-blue: rgba(0, 117, 255, 0.13);
+  --opacity-accent-orange: rgba(204, 103, 9, .15);
+  --opacity-accent-green: rgba(55, 189, 107, .15);
+  /* form */
+  --form-text: #909395;
+  --form-title: #FFFFFF;
+  --form-background: #1A1C1E;
+  --form-input-background: #111315;
+  /* sidebar */
+  --sidebar-background: #111315;
+  --sidebar-icon: #FFFFFF;
+  --sidebar-text: #FFFFFF;
+  /* search-bar */
+  --search-bar-background: #111315;
+  --search-bar-text: #909395;
+  /* input */
+  --input-background: #111315;
+  --input-text: #909395;
+  --input-title: #909395;
+  --input-border: #111315;
+  /* user */
+  --user-name: #FFFFFF;
+  --user-position: #909395;
+  /* notification */
+  --notification-ring: #FFFFFF;
+  /* task */
+  --task-icon: #FFFFFF;
+  --task-title: #FFFFFF;
+  --task-description: #888585;
+  --task-date-created: #888585;
+  --task-context-menu: #FFFFFF;
+  --task-background: #111315;
+  /* drag and drop */
+  --dnd-backdrop: #909395;
+}
+
+[data-color-theme="light"] {
+  /* main */
+  --main-background: #F5F5F5;
+  /* title */
+  --title: #333333;
+  /* sidebar */
+  --sidebar-background: #FFFFFF;
+  --sidebar-icon: #606265;
+  --sidebar-text: #606265;
+  /* search-bar */
+  --search-bar-background: #FFFFFF;
+  /* input */
+  --input-background: #FFFFFF;
+  /* user */
+  --user-name: #333333;
+  /* notification */
+  --notification-ring: #333333;
+  /* task */
+  --task-icon: #333333;
+  --task-title: #333333;
+  --task-context-menu: #333333;
+  --task-background: #FFFFFF;
+
+  .sidebar {
+    svg {
+      path {
+        fill: #606265;
+      }
+    }
+  }
+}
