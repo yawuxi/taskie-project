@@ -1,10 +1,10 @@
 //react
-import React, { useEffect } from 'react';
+import React from 'react';
 //rtk
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { useAppSelector } from "../../hooks/hooks";
 //firebase
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import firebaseConfig from "../../firebase/firebase.config";
+import FirebaseConfig from "../../firebase/firebase.config";
 import { setDoc, doc } from "firebase/firestore";
 //additional
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
@@ -20,11 +20,8 @@ const onDragEnd = (
   result: DropResult,
   columns: iProjectsColumnTypes[],
   uuid: string,
-  // setColumns: ActionCreatorWithPayload<iProjectsColumnTypes[], "projects-slice/setColumns">,
-  // dispatch: Dispatch<any>,
 ) => {
   const {source, destination} = result
-  console.log(result)
 
   if (!destination) {
     return;
@@ -57,7 +54,7 @@ const onDragEnd = (
 
     //setting the state
     //dispatch(setColumns(copyOfData))
-    setDoc(doc(firebaseConfig.firestoreDB, 'users', uuid), {
+    setDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
       columns: copyOfData
     }, {merge: true})
   } else {
@@ -80,7 +77,7 @@ const onDragEnd = (
 
     //settings the state
     // dispatch(setColumns(copyOfData))
-    setDoc(doc(firebaseConfig.firestoreDB, 'users', uuid), {
+    setDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
       columns: copyOfData
     }, {merge: true})
   }
@@ -88,7 +85,7 @@ const onDragEnd = (
 
 const Projects: React.FC = () => {
   const {uuid} = useAppSelector(state => state.userSlice)
-  const [userData, userDataLoading, userDataError] = useDocumentData(doc(firebaseConfig.firestoreDB, 'users', uuid))
+  const [userData, userDataLoading, userDataError] = useDocumentData(doc(FirebaseConfig.firestoreDB, 'users', uuid))
 
   if (userDataLoading) {
     return <Loader />

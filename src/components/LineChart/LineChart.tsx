@@ -35,10 +35,22 @@ ChartJS.register(
 dayjs.extend(IsoWeek)
 dayjs.extend(Weekday)
 
+interface iCountToDays {
+  'Monday': number,
+  'Tuesday': number,
+  'Wednesday': number,
+  'Thursday': number,
+  'Friday': number,
+  'Saturday': number,
+  'Sunday': number,
+}
+
+type daysOfTheWeekType = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
+
 const calcDate = ({columns}: { columns: iProjectsColumnTypes[] }) => {
   const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   const countToDaysArr = [0, 0, 0, 0, 0, 0, 0]
-  const countToDays = {
+  const countToDays: iCountToDays = {
     'Monday': 0,
     'Tuesday': 0,
     'Wednesday': 0,
@@ -55,7 +67,7 @@ const calcDate = ({columns}: { columns: iProjectsColumnTypes[] }) => {
   //saving data to array by day for chart
   tasks.map(task => {
     const dayWhenTaskCompleteInDigit = dayjs(task.dateCompleted).isoWeekday()
-    countToDays[daysOfTheWeek[dayWhenTaskCompleteInDigit - 1]] += 1
+    countToDays[daysOfTheWeek[dayWhenTaskCompleteInDigit - 1] as daysOfTheWeekType] += 1
     countToDaysArr[dayWhenTaskCompleteInDigit - 1] += 1
   })
 

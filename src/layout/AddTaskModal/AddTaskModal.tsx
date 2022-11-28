@@ -1,25 +1,39 @@
 //react
-import React from 'react';
+import React, { useEffect } from 'react';
 //rtk
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { toggleAddTasksModal } from "../../app/modal-windows-slice";
 import { setTasksToColumnTasks } from "../../features/projects-table/slices/projects-slice";
+//firebase
+import FirebaseConfig from "../../firebase/firebase.config";
+import { updateDoc, doc } from 'firebase/firestore'
 //formik+yup
 import { Formik, Form, Field } from "formik";
 import * as Yup from 'yup'
 //additional
 import { v4 } from 'uuid'
+import dayjs from "dayjs";
 //components
 import Components from "../../components";
 //styles
 import './AddTaskModal.scss'
-import { iProjectsColumnTypes } from "../../features/projects-table/types/projects-column-types";
-import dayjs from "dayjs";
 
 const AddTaskModal: React.FC = () => {
   const dispatch = useAppDispatch()
   const {addTasksModal} = useAppSelector(state => state.modalWindowsSlice)
+  const {columns} = useAppSelector(state => state.projectsSlice)
+  const {uuid} = useAppSelector(state => state.userSlice)
   const displayModalClass = addTasksModal ? 'add-task-modal' : 'add-task-modal add-task-modal--hidden'
+
+  //when columns array is updating
+  //update firestore database columns array
+  useEffect(() => {
+    if (columns[0].projectTasksList.length) {
+      updateDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
+        columns,
+      })
+    }
+  }, [columns])
 
   return (
     <div className={displayModalClass}>
@@ -45,6 +59,9 @@ const AddTaskModal: React.FC = () => {
               columnType: 'new',
               id: v4(),
             }))
+            // updateDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
+            //   columns,
+            // })
           }}
         >
           {({errors, touched}) => (
@@ -61,7 +78,8 @@ const AddTaskModal: React.FC = () => {
         </Formik>
       </div>
     </div>
-  );
+  )
+    ;
 };
 
 export { AddTaskModal };
