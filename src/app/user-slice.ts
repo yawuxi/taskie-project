@@ -23,6 +23,12 @@ const userSlice = createSlice({
   name: 'user-slice',
   initialState,
   reducers: {
+    setAllData: (state, action: PayloadAction<iUserSlice>) => (
+      {
+        ...action.payload,
+        uuid: state.uuid
+      }
+    ),
     setUUID: (state, action: PayloadAction<string>) => {
       state.uuid = action.payload
     },
@@ -32,5 +38,5 @@ const userSlice = createSlice({
   }
 })
 
-export const {setUUID, setAvatar} = userSlice.actions
+export const {setUUID, setAvatar, setAllData} = userSlice.actions
 export default userSlice.reducer
