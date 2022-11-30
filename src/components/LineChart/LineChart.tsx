@@ -1,6 +1,5 @@
 //react
 import React from 'react';
-//firebase
 //additional
 import { Line } from 'react-chartjs-2';
 import {

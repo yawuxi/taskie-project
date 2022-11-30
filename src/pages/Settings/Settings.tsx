@@ -5,7 +5,6 @@ import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { setAvatar } from "../../app/user-slice";
 import { Dispatch } from "@reduxjs/toolkit";
 //firebase
-import { useDocumentData } from "react-firebase-hooks/firestore";
 import { doc, setDoc } from 'firebase/firestore';
 import firebaseConfig from "../../firebase/firebase.config";
 import { ref, uploadBytes } from 'firebase/storage';
@@ -35,7 +34,6 @@ const Settings: React.FC = () => {
   const [file, setFile] = useState<null | File>(null)
   const {uuid} = useAppSelector(state => state.userSlice)
   const {generateTestData} = useAppSelector(state => state.authMethodsSlice)
-  const [data, dataLoading, dataError] = useDocumentData(doc(firebaseConfig.firestoreDB, 'users', uuid))
 
   //uploading avatar when user load him
   useEffect(() => {
@@ -79,13 +77,13 @@ const Settings: React.FC = () => {
             <div>
               {errors.name && touched.name ? <div className="authentication-page__error">{errors.name}</div> : null}
               <h3 className="settings-page__input-title">Your name</h3>
-              <Field name="name" type="text" placeholder={data?.displayName} />
+              <Field name="name" type="text" placeholder="" />
             </div>
             <div>
               {errors.position && touched.position ?
                 <div className="authentication-page__error">{errors.position}</div> : null}
               <h3 className="settings-page__input-title">Your position</h3>
-              <Field name="position" type="text" placeholder={data?.displayPosition} />
+              <Field name="position" type="text" placeholder="" />
             </div>
             <div>
               <h3 className="settings-page__input-title">Your avatar</h3>

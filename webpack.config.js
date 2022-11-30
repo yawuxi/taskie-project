@@ -16,7 +16,8 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: 'bundle.[hash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: "/"
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass']
@@ -40,6 +41,7 @@ module.exports = {
   //dev server
   devServer: {
     port: 4250,
+    historyApiFallback: true,
   },
 
   //loaders
