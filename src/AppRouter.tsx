@@ -1,30 +1,31 @@
 //react
-import React from 'react';
+import React, { useEffect } from 'react';
 //rtk
-import { useAppDispatch } from "./hooks/hooks";
-import { setUUID } from "./app/user-slice";
+import { iUserSlice, setAllData } from "./app/user-slice";
+import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 //firebase
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { doc } from "firebase/firestore";
 import FirebaseConfig from "./firebase/firebase.config";
-import { useAuthState } from 'react-firebase-hooks/auth'
 //router
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "./routes";
 import { Navigate, Route, Routes } from "react-router-dom";
 //components
 import Layout from "./layout";
-import Components from "./components";
 
-const AppRouter = () => {
+const AppRouter = ({user}: { user: any }) => {
+  const {uuid} = useAppSelector(state => state.userSlice)
   const dispatch = useAppDispatch()
-  const [user, userLoading] = useAuthState(FirebaseConfig.firebaseAUTH)
+  const [userData] = useDocumentData(doc(FirebaseConfig.firestoreDB, 'users', uuid))
 
-  if (userLoading) {
-    return <Components.Loader />
-  }
+  //posting data from firestore to local global storage
+  useEffect(() => {
+    if (userData) {
+      dispatch(setAllData(userData as iUserSlice))
+    }
+  }, [userData])
 
   if (user) {
-    //put uuid to the redux storage
-    dispatch(setUUID(user.uid))
-
     return (
       <>
         <Layout.Sidebar />
