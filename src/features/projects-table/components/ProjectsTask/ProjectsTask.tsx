@@ -74,7 +74,6 @@ const ProjectsTask: React.FC<Omit<iProjectTaskTypes, 'id'>> = ({
                                                                  providedDraggableProps,
                                                                  snapshot,
                                                                }) => {
-  console.log(columnType)
   return (
     <li className="projects-task"
       ref={providedRef}

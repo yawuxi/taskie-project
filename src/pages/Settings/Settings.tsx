@@ -32,7 +32,7 @@ const loadAvatarToStorage = (
 const Settings: React.FC = () => {
   const dispatch = useAppDispatch()
   const [file, setFile] = useState<null | File>(null)
-  const {uuid} = useAppSelector(state => state.userSlice)
+  const {uuid, displayName, displayPosition} = useAppSelector(state => state.userSlice)
   const {generateTestData} = useAppSelector(state => state.authMethodsSlice)
 
   //uploading avatar when user load him
@@ -77,13 +77,13 @@ const Settings: React.FC = () => {
             <div>
               {errors.name && touched.name ? <div className="authentication-page__error">{errors.name}</div> : null}
               <h3 className="settings-page__input-title">Your name</h3>
-              <Field name="name" type="text" placeholder="" />
+              <Field name="name" type="text" placeholder={displayName} />
             </div>
             <div>
               {errors.position && touched.position ?
                 <div className="authentication-page__error">{errors.position}</div> : null}
               <h3 className="settings-page__input-title">Your position</h3>
-              <Field name="position" type="text" placeholder="" />
+              <Field name="position" type="text" placeholder={displayPosition} />
             </div>
             <div>
               <h3 className="settings-page__input-title">Your avatar</h3>

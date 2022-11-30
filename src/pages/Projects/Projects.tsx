@@ -3,7 +3,6 @@ import React from 'react';
 //rtk
 import { useAppSelector } from "../../hooks/hooks";
 //firebase
-import { useDocumentData } from "react-firebase-hooks/firestore";
 import FirebaseConfig from "../../firebase/firebase.config";
 import { setDoc, doc } from "firebase/firestore";
 //additional
@@ -13,7 +12,6 @@ import { iProjectsColumnTypes } from "../../features/projects-table/types/projec
 import { ProjectsColumn } from "../../features/projects-table";
 //styles
 import './Projects.scss'
-import { Loader } from "../../components/Loader/Loader";
 
 //drag and drop algorithm
 const onDragEnd = (
@@ -84,18 +82,13 @@ const onDragEnd = (
 }
 
 const Projects: React.FC = () => {
-  const {uuid} = useAppSelector(state => state.userSlice)
-  const [userData, userDataLoading, userDataError] = useDocumentData(doc(FirebaseConfig.firestoreDB, 'users', uuid))
-
-  if (userDataLoading) {
-    return <Loader />
-  }
+  const {uuid, columns} = useAppSelector(state => state.userSlice)
 
   return (
-    <DragDropContext onDragEnd={result => onDragEnd(result, userData?.columns, uuid,)}>
+    <DragDropContext onDragEnd={result => onDragEnd(result, columns, uuid,)}>
       <div className="projects">
         {
-          userData?.columns.map((column: iProjectsColumnTypes) => (
+          columns.map((column: iProjectsColumnTypes) => (
             <Droppable droppableId={column.id} key={column.id}>
               {(provided, snapshot) => (
                 <div

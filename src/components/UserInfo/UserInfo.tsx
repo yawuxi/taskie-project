@@ -11,7 +11,7 @@ import avatarPlaceholder from '../../assets/avatar-placeholder.png'
 
 const UserInfo: React.FC = () => {
   const [avatarUrl, setAvatarUrl] = useState('')
-  const {uuid, avatar} = useAppSelector(state => state.userSlice)
+  const {uuid, avatar, displayPosition, displayName} = useAppSelector(state => state.userSlice)
 
   useEffect(() => {
     getDownloadURL(ref(firebaseConfig.firebaseSTORAGE, `user-images/${uuid}/avatar`))
@@ -24,8 +24,8 @@ const UserInfo: React.FC = () => {
     <div className="user-info">
       <img className="user-info__avatar" src={avatarUrl || avatarPlaceholder} alt="user" />
       <div className="user-info__data">
-        <span className="user-info__name">Test name</span>
-        <span className="user-info__position">Test position</span>
+        <span className="user-info__name">{displayName}</span>
+        <span className="user-info__position">{displayPosition}</span>
       </div>
     </div>
   );

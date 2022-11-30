@@ -17,7 +17,6 @@ import IsoWeek from 'dayjs/plugin/isoWeek';
 import Weekday from 'dayjs/plugin/weekday'
 //types
 import { iProjectsColumnTypes } from "../../features/projects-table/types/projects-column-types";
-import { iUserSlice } from "../../app/user-slice";
 //styles
 import './LineChart.scss'
 
@@ -46,7 +45,7 @@ interface iCountToDays {
 
 type daysOfTheWeekType = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
 
-const calcDate = ({columns}: { columns: iProjectsColumnTypes[] }) => {
+const calcDate = (columns: iProjectsColumnTypes[]) => {
   const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   const countToDaysArr = [0, 0, 0, 0, 0, 0, 0]
   const countToDays: iCountToDays = {
@@ -73,7 +72,7 @@ const calcDate = ({columns}: { columns: iProjectsColumnTypes[] }) => {
   return countToDaysArr
 }
 
-const LineChart: React.FC<{ data: iUserSlice }> = ({data}) => {
+const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => {
   return (
     <div className="line-chart">
       <div className="line-chart__chart">
@@ -95,9 +94,9 @@ const LineChart: React.FC<{ data: iUserSlice }> = ({data}) => {
           }}
           data={{
             labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            datasets: data.columns.map((column: iProjectsColumnTypes) => ({
+            datasets: columns.map((column: iProjectsColumnTypes) => ({
               label: column.title,
-              data: calcDate(data),
+              data: calcDate(columns),
             })),
           }}
         />

@@ -10,7 +10,7 @@ import './DoughnutChart.scss'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart: React.FC<{ data: any }> = ({data}) => {
+const DoughnutChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => {
   return (
     <div className="doughnut-chart">
       <h3 className="doughnut-chart__title">Total tasks chart</h3>
@@ -20,11 +20,11 @@ const DoughnutChart: React.FC<{ data: any }> = ({data}) => {
             maintainAspectRatio: false,
           }}
           data={{
-            labels: data.columns.map((column: iProjectsColumnTypes) => column.title),
+            labels: columns.map((column: iProjectsColumnTypes) => column.title),
             datasets: [
               {
                 label: '# of Tasks',
-                data: data.columns.map((column: iProjectsColumnTypes) => column.projectTasksList.length),
+                data: columns.map((column: iProjectsColumnTypes) => column.projectTasksList.length),
                 backgroundColor: [
                   'rgba(255, 255, 255, 0.2)',
                   'rgba(204, 103, 9, 0.2)',
