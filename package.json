@@ -2,6 +2,7 @@
   "name": "webpack-build",
   "version": "1.0.0",
   "description": "yawuxi`s webpack build for react project",
+  "homepage": "https://taskie-project-yawuxi.vercel.app/",
   "main": "index.tsx",
   "scripts": {
     "start": "webpack-dev-server --node-env development --open",
