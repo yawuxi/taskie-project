@@ -1,9 +1,7 @@
 {
-  "name": "webpack-build",
+  "name": "taskie-project",
   "version": "1.0.0",
-  "description": "yawuxi`s webpack build for react project",
-  "homepage": "https://taskie-project-yawuxi.vercel.app/",
-  "main": "index.tsx",
+  "description": "Project & Task manager with Drag n Drop ability",
   "scripts": {
     "start": "webpack-dev-server --node-env development --open",
     "dev": "webpack --node-env development",
