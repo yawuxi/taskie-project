@@ -7,7 +7,7 @@ import { store } from "./app/store";
 //firebase
 import { Firebase } from "./firebase/Firebase";
 //additional
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { SnackbarProvider } from 'notistack'
 //components
 import { App } from './App'
@@ -16,13 +16,13 @@ import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   // <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <SnackbarProvider>
-          <Firebase />
-          <App />
-        </SnackbarProvider>
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <HashRouter>
+      <SnackbarProvider>
+        <Firebase />
+        <App />
+      </SnackbarProvider>
+    </HashRouter>
+  </Provider>
   // </React.StrictMode>
 )
