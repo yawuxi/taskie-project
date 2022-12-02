@@ -33,43 +33,17 @@ ChartJS.register(
 dayjs.extend(IsoWeek)
 dayjs.extend(Weekday)
 
-interface iCountToDays {
-  'Monday': number,
-  'Tuesday': number,
-  'Wednesday': number,
-  'Thursday': number,
-  'Friday': number,
-  'Saturday': number,
-  'Sunday': number,
-}
-
-type daysOfTheWeekType = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
-
 const calcDate = (columns: iProjectsColumnTypes[]) => {
-  const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-  const countToDaysArr = [0, 0, 0, 0, 0, 0, 0]
-  const countToDays: iCountToDays = {
-    'Monday': 0,
-    'Tuesday': 0,
-    'Wednesday': 0,
-    'Thursday': 0,
-    'Friday': 0,
-    'Saturday': 0,
-    'Sunday': 0,
-  }
-  const currentDate = dayjs().format('YYYY-MM-DD')
-  //getting completed tasks list
-  const completedTasksList = columns.filter(column => column.columnType === 'completed')[0].projectTasksList
-  //filtering all completed tasks by last 7 days
-  const tasks = completedTasksList.filter(task => dayjs(currentDate).diff(task.dateCompleted, 'day') <= 7)
-  //saving data to array by day for chart
-  tasks.map(task => {
-    const dayWhenTaskCompleteInDigit = dayjs(task.dateCompleted).isoWeekday()
-    countToDays[daysOfTheWeek[dayWhenTaskCompleteInDigit - 1] as daysOfTheWeekType] += 1
-    countToDaysArr[dayWhenTaskCompleteInDigit - 1] += 1
+  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  const weekResult = [0, 0, 0, 0, 0, 0, 0]
+  const completedTasks = columns.filter(column => column.columnType === 'completed').map(column => column.projectTasksList)[0]
+  weekDays.map((day, index) => {
+    if (completedTasks !== undefined){
+      return completedTasks.map(task => day === dayjs(task.dateCompleted).format('dddd') ? weekResult[index] += 1 : weekResult[index])
+    }
   })
 
-  return countToDaysArr
+  return weekResult
 }
 
 const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => {
@@ -81,6 +55,10 @@ const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => 
             maintainAspectRatio: false,
             scales: {
               y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1,
+                },
                 grid: {
                   color: '#111315'
                 }
@@ -94,10 +72,12 @@ const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => 
           }}
           data={{
             labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            datasets: columns.map((column: iProjectsColumnTypes) => ({
-              label: column.title,
-              data: calcDate(columns),
-            })),
+            datasets: [{
+              label: 'Completed tasks',
+              data:  calcDate(columns),
+              borderColor: '#111315',
+              backgroundColor: '#1A1C1E',
+            }],
           }}
         />
       </div>

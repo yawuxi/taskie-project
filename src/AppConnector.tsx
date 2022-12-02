@@ -12,7 +12,6 @@ const AppConnector: React.FC = () => {
   const {uuid} = useAppSelector(state => state.userSlice)
   const dispatch = useAppDispatch()
   const [userData] = useDocumentData(doc(FirebaseConfig.firestoreDB, 'users', uuid))
-  console.log(userData)
 
   //posting data from firestore to local global storage
   useEffect(() => {

@@ -12,6 +12,7 @@ import { iProjectsColumnTypes } from "../../features/projects-table/types/projec
 import { ProjectsColumn } from "../../features/projects-table";
 //styles
 import './Projects.scss'
+import dayjs from "dayjs";
 
 //drag and drop algorithm
 const onDragEnd = (
@@ -32,8 +33,8 @@ const onDragEnd = (
     return;
   }
 
-  //*working with same column?
   if (source.droppableId === destination.droppableId) {
+    //*working with same column?
     //*Yep. With same
     //getting index and copies of data
     const columnIndex = columns.findIndex(column => column.id === String(source.droppableId))
@@ -56,7 +57,8 @@ const onDragEnd = (
       columns: copyOfData
     }, {merge: true})
   } else {
-    //*No. With other
+    //*working with same column?
+    //*No. With different column
     //getting index and copies of columns
     const startColumnIndex = columns.findIndex(column => column.id === String(source.droppableId))
     const endColumnIndex = columns.findIndex(colum => colum.id === String(destination.droppableId))
@@ -66,7 +68,14 @@ const onDragEnd = (
     const copyEndColumnByIndex = JSON.parse(JSON.stringify(columns[endColumnIndex]))
 
     //transform from column to column
+    //if columnType is 'completed' change task property dateCompleted
+    //to current date, if not, clear that property
     const [removed] = copyStartColumnByIndex.projectTasksList.splice(source.index, 1)
+    if (copyEndColumnByIndex.columnType === 'completed') {
+      removed.dateCompleted = dayjs().format('YYYY-MM-DD')
+    } else {
+      removed.dateCompleted = ''
+    }
     copyEndColumnByIndex.projectTasksList.splice(destination.index, 0, removed)
 
     //changing old columns by new columns
