@@ -24,8 +24,8 @@ const UserInfo: React.FC = () => {
     <div className="user-info">
       <img className="user-info__avatar" src={avatarUrl || avatarPlaceholder} alt="user" />
       <div className="user-info__data">
-        <span className="user-info__name">{displayName}</span>
-        <span className="user-info__position">{displayPosition}</span>
+        <span className="user-info__name">{displayName || 'Please set your name in settings'}</span>
+        <span className="user-info__position">{displayPosition || 'Please set your name in settings'}</span>
       </div>
     </div>
   );

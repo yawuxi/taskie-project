@@ -49,6 +49,7 @@ const calcDate = (columns: iProjectsColumnTypes[]) => {
 const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => {
   return (
     <div className="line-chart">
+      <h3 className="doughnut-chart__title">Total completed tasks</h3>
       <div className="line-chart__chart">
         <Line
           options={{
@@ -60,12 +61,12 @@ const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => 
                   stepSize: 1,
                 },
                 grid: {
-                  color: '#111315'
+                  color: '#1A1C1E'
                 }
               },
               x: {
                 grid: {
-                  color: '#111315'
+                  color: '#1A1C1E'
                 }
               }
             }
@@ -75,8 +76,8 @@ const LineChart: React.FC<{ columns: iProjectsColumnTypes[] }> = ({columns}) => 
             datasets: [{
               label: 'Completed tasks',
               data:  calcDate(columns),
-              borderColor: '#111315',
-              backgroundColor: '#1A1C1E',
+              borderColor: '#313638',
+              backgroundColor: '#111315',
             }],
           }}
         />
