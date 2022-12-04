@@ -3,6 +3,31 @@
   width: 60%;
   height: 100%;
 
+  &__list {
+    background-color: var(--background-dark);
+    border-radius: 0.625rem;
+    color: var(--search-bar-text);
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    background-color: var(--background-light);
+    margin-bottom: 0.625rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-info {
+      span {
+        color: var(--search-bar-text-white)
+      }
+    }
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -23,6 +48,7 @@
     background-color: var(--search-bar-background);
     color: var(--search-bar-text);
     border-radius: 0.625rem;
+    margin-bottom: .5rem;
   }
 }
 

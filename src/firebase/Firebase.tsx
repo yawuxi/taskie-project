@@ -30,6 +30,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-08-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'new',
           id: '1',
         },
         {
@@ -37,6 +38,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'new',
           id: '2',
         },
         {
@@ -44,6 +46,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'new',
           id: '3',
         },
       ],
@@ -58,6 +61,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-08-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'progress',
           id: '4',
         },
         {
@@ -65,6 +69,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'progress',
           id: '5',
         },
         {
@@ -72,6 +77,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '',
+          columnType: 'progress',
           id: '6',
         },
       ],
@@ -86,6 +92,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-08-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '2022-11-20',
+          columnType: 'completed',
           id: '7',
         },
         {
@@ -93,6 +100,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '2022-11-20',
+          columnType: 'completed',
           id: '8',
         },
         {
@@ -100,6 +108,7 @@ const fakeData: Pick<iUserSlice, 'columns'> = {
           date: '2022-09-02',
           description: 'Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum Lorem ipsum test ipsum',
           dateCompleted: '2022-11-20',
+          columnType: 'completed',
           id: '9',
         },
       ],

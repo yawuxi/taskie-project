@@ -73,9 +73,15 @@ const onDragEnd = (
     const [removed] = copyStartColumnByIndex.projectTasksList.splice(source.index, 1)
     if (copyEndColumnByIndex.columnType === 'completed') {
       removed.dateCompleted = dayjs().format('YYYY-MM-DD')
+      removed.columnType = 'completed'
+    } else if (copyEndColumnByIndex.columnType === 'progress') {
+      removed.columnType = 'progress'
+      removed.dateCompleted = ''
     } else {
+      removed.columnType = 'new'
       removed.dateCompleted = ''
     }
+    console.log(removed)
     copyEndColumnByIndex.projectTasksList.splice(destination.index, 0, removed)
 
     //changing old columns by new columns
