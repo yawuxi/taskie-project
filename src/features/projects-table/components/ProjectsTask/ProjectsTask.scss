@@ -3,9 +3,20 @@
   background-color: var(--task-background);
   border-radius: 0.625rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
 
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0 !important;
+    }
+  }
+  
   &__title {
     font-size: 1.25rem;
     color: var(--task-title);
@@ -19,5 +30,10 @@
     color: var(--task-date-created);
     margin-top: auto;
     text-align: right;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 0.625rem;
   }
 }

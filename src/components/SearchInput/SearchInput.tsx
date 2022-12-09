@@ -20,7 +20,6 @@ const SearchInput: React.FC = () => {
     const {columns} = useAppSelector(state => state.userSlice)
     const [term, setTerm] = useState('')
     const [fondedTasks, setFondedTasks] = useState<iProjectTaskTypes[]>([])
-    console.log(fondedTasks)
 
     useEffect(() => {
       if (term.length > 0) {
