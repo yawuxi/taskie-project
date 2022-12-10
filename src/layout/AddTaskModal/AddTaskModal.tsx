@@ -69,7 +69,7 @@ const AddTaskModal: React.FC = () => {
             onSubmit={({title, description}) => {
               setDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
                 columns: addTaskOnSubmit(columns, title, description)
-              })
+              }, {merge: true})
             }}
           >
             {({errors, touched}) => (

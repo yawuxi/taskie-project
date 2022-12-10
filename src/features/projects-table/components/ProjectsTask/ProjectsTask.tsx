@@ -94,7 +94,7 @@ const onTaskRemove = (columns: iProjectsColumnTypes[], id: string, uuid: string)
   //posting data to firebase
   setDoc(doc(FirebaseConfig.firestoreDB, 'users', uuid), {
     columns: copyOfColumns
-  })
+  }, {merge: true})
 }
 
 const ProjectsTask: React.FC<iProjectTaskTypes> = ({
