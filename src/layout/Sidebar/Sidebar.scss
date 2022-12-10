@@ -10,8 +10,10 @@
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: fixed;
+    // justify-content: space-between;
+    position: sticky;
+    top: 4.375rem;
+    height: calc(100vh - 4.375rem * 2);
   }
 
   &__close {
@@ -49,7 +51,11 @@
   &__logo {
     display: flex;
     gap: 0.9375rem;
-    margin-bottom: 6.25rem;
+    margin-bottom: 1.5625rem;
+  }
+
+  &__add-button {
+    margin-bottom: 9.375rem;
   }
 
   &__logo-circle {
@@ -101,6 +107,14 @@
       }
     }
   }
+
+  &__sign-out {
+    margin-top: auto;
+  }
+
+  &__sign-out-button {
+    margin-top: auto;
+  }
 }
 
 @media (max-width: 999px) {
@@ -137,10 +151,9 @@
 
 @media (max-height: 800px) {
   .sidebar {
-    &__logo {
-      margin-bottom: 3.5rem;
+    &__add-button {
+      margin-bottom:  5.625rem;
     }
-
 
     &__list {
       gap: 1em;
@@ -151,10 +164,9 @@
 
 @media (max-height: 675px) {
   .sidebar {
-    &__logo {
-      margin-bottom: 2.5rem;
+    &__add-button {
+      margin-bottom:  2.5rem;
     }
-
 
     &__list {
       gap: 1em;

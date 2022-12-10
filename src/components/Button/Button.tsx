@@ -5,6 +5,7 @@ import './Button.scss'
 
 interface iButtonProps {
   text: string,
+  classDefine?: string,
   type?: 'button' | 'submit' | 'reset',
   styles?: object,
   clickFunction?: (e: React.MouseEvent) => void,
@@ -12,13 +13,14 @@ interface iButtonProps {
 
 const Button: React.FC<iButtonProps> = ({
                                           text = '',
+                                          classDefine = '',
                                           type = 'button',
                                           styles = {},
                                           clickFunction = (e) => {
                                           },
                                         }) => {
   return <button
-    className="common-button"
+    className={'common-button ' + classDefine}
     type={type}
     style={styles}
     onClick={clickFunction}

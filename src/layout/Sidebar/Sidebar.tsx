@@ -153,8 +153,12 @@ const Sidebar: React.FC = () => {
         <div className="sidebar__logo">
           <div className="sidebar__logo-circle">T</div>
           <div className="sidebar__logo-text">TASKIE</div>
-          <span onClick={signOutMethod}>SIGN OUT</span>
         </div>
+        <Components.Button
+          text="Add new"
+          clickFunction={() => dispatch(toggleAddTasksModal())}
+          classDefine="sidebar__add-button"
+        />
         <ul className="sidebar__list" onClick={e => blockScrolling(e, dispatch, setIsOpen)}>
           {
             PRIVATE_ROUTES.map(({path, title}) => (
@@ -172,11 +176,14 @@ const Sidebar: React.FC = () => {
             ))
           }
         </ul>
-        <Components.Button text="Add new" clickFunction={() => dispatch(toggleAddTasksModal())} />
+        <Components.Button
+          text="Sign out"
+          clickFunction={signOutMethod}
+          classDefine="sidebar__sign-out-button"
+        />
       </div>
     </div>
   )
-    ;
 };
 
 export { Sidebar };
